@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Кальякулятор для вопроса 3</title>
+        <script>
+            let expression = '';
+
+            function calculate() {
+                const screen = document.querySelector('#screen');
+
+                try {
+                    const result = eval(expression)
+                    screen.innerHTML = result || 0;
+                } catch (error) {
+                    screen.innerHTML = "ОШИБКА";
+                }
+            }
+
+            function reset() {
+                expression = '';
+                calculate()
+            }
+
+            function onPressButton(button) {
+                const screen = document.querySelector('#screen');
+
+                expression = expression + button;
+                screen.innerHTML = expression;
+            }
+        </script>
+
+        
+        <style>
+            .calculator {
+                width: 320px;
+                margin: 50px auto;
+                padding: 12px;
+                border-radius: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: linear-gradient(45deg, #b3b3b3, #dadada);
+                box-shadow: -3px 3px 1px 2px #919191;
+            }
+
+            #screen {
+                width: 100%;
+                height: 50px;
+                padding: 10px;
+                border: 1px solid black;
+                box-sizing: border-box;
+                box-shadow: inset 0 0 4px 0px black;
+                border-radius: 6px;
+                background: #464646;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .numbers {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .actions {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .buttons button {
+                width: 50px;
+                height: 50px;
+                box-sizing: border-box;
+
+                background: linear-gradient(45deg, #363636, #414141);
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 8px;
+
+                cursor: pointer;
+                border: none;
+                box-shadow: 0 0 2px 0px #434343ad;
+            }
+
+            .buttons button:active {
+                box-shadow: inset 0 0 7px 2px #1010109e;
+            }
+
+            .box {
+                display: flex;
+                margin-top: 20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <div id="screen">
+                    0
+            </div>
+            <div class="box">
+                <div class="buttons numbers">
+                    <button onClick="onPressButton(1)">
+                        1
+                    </button>
+                    <button onClick="onPressButton(2)">
+                        2
+                    </button>
+                    <button onClick="onPressButton(3)">
+                        3
+                    </button>
+                    <button onClick="onPressButton(4)">
+                        4
+                    </button>
+                    <button onClick="onPressButton(5)">
+                        5
+                    </button>
+                    <button onClick="onPressButton(6)">
+                        6
+                    </button>
+                    <button onClick="onPressButton(7)">
+                        7
+                    </button>
+                    <button onClick="onPressButton(8)">
+                        8
+                    </button>
+                    <button onClick="onPressButton(9)">
+                        9
+                    </button>
+    
+                    <button onClick="onPressButton(0)">
+                        0
+                    </button>
+    
+                </div>
+    
+                <div class="buttons actions">
+                    <button onClick="onPressButton('+')">
+                        +
+                    </button>
+                    <button onClick="onPressButton('-')">
+                        -
+                    </button>
+                    <button onClick="onPressButton('*')">
+                        *
+                    </button>
+                    <button onClick="onPressButton('/')">
+                        /
+                    </button>
+                    <button onClick="reset()">
+                        C
+                    </button>
+                    <button onClick="calculate()">
+                        =
+                    </button>
+                </div>
+            </div>
+        
+        </div>
+    </body>
+</html>
